@@ -1,4 +1,4 @@
-# RedShift Virtual Schema 1.0.0, released 2021-01-15
+# Redshift Virtual Schema 1.0.0, released 2021-01-15
 
 Code name: Migration from the virtual-schemas repository
 
