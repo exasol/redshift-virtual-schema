@@ -18,7 +18,7 @@ SonarCloud results:
 
 # Overview
 
-The **Redshift Virtual Schema** provides an abstraction layer that makes an external [AWS Redshift](https://aws.amazon.com/redshift/) data source accessible from an Exasol database through regular SQL commands. The contents of the external AWS Redshitf data source are mapped to virtual tables which look like and can be queried as any regular Exasol table.
+The **Redshift Virtual Schema** provides an abstraction layer that makes an external [AWS Redshift](https://aws.amazon.com/redshift/) data source accessible from an Exasol database through regular SQL commands. The contents of the external AWS Redshift data source are mapped to virtual tables which look like and can be queried as any regular Exasol table.
 
 If you want to set up a Virtual Schema for a different database system, please head over to the [Virtual Schemas Repository][virtual-schemas].
 
