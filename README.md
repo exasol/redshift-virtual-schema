@@ -57,7 +57,6 @@ Running the Virtual Schema requires a Java Runtime version 11 or later.
 | [Java Hamcrest](http://hamcrest.org/JavaHamcrest/)                 | Checking for conditions in code via matchers           | BSD License                   |
 | [JUnit](https://junit.org/junit5)                                  | Unit testing framework                                 | Eclipse Public License 1.0    |
 | [Mockito](http://site.mockito.org/)                                | Mocking framework                                      | MIT License                   |
-| [Exasol Hamcrest Result Set Matcher][exasol-hamcrest]              | Hamcrest result set matcher for testing                | MIT License                   |
 
 ### Maven Plug-ins
 
