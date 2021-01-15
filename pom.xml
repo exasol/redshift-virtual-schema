@@ -3,7 +3,7 @@
 	<groupId>com.exasol</groupId>
 	<artifactId>redshift-virtual-schema</artifactId>
 	<version>1.0.0</version>
-	<name>Virtual Schema for RedShift</name>
+	<name>Virtual Schema for Redshift</name>
 	<distributionManagement>
 		<repository>
 			<id>maven.exasol.com</id>
