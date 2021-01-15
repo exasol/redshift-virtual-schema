@@ -47,7 +47,7 @@ Running the Virtual Schema requires a Java Runtime version 11 or later.
 | Dependency                                                         | Purpose                                                | License                                          |
 |--------------------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------|
 | [Exasol Virtual Schema JDBC][virtual-schema-common-jdbc]           | Common JDBC functions for Virtual Schemas adapters     | MIT License                                      |
-| [Redshift JDBC driver][redshift-jdbc-driver]                       | DBC driver for Athena database                         | See [Redshift JDBC driver][redshift-jdbc-driver] |
+| [Redshift JDBC driver][redshift-jdbc-driver]                       | JDBC driver for Redshift data source                   | See [Redshift JDBC driver][redshift-jdbc-driver] |
 | [Exasol Error Reporting][exasol-error-reporting]                   | Creating unified error messages                        | MIT License                                      |
 
 ### Test Dependencies
