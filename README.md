@@ -24,7 +24,7 @@ If you want to set up a Virtual Schema for a different database system, please h
 
 ## Features
 
-* Access a AWS Redshitf data source in read only mode from an Exasol database, using a Virtual Schema.
+* Access an AWS Redshift data source in read-only mode from an Exasol database, using a Virtual Schema.
 
 ## Table of Contents
 
