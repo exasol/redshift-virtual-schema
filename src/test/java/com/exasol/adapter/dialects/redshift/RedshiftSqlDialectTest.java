@@ -102,7 +102,6 @@ class RedshiftSqlDialectTest {
     }
 
     private void setMandatoryProperties() {
-        this.rawProperties.put(AdapterProperties.SQL_DIALECT_PROPERTY, "REDSHIFT");
         this.rawProperties.put(AdapterProperties.CONNECTION_NAME_PROPERTY, "MY_CONN");
     }
 
@@ -162,7 +161,6 @@ class RedshiftSqlDialectTest {
 
     @Test
     void testGetSqlGenerationVisitor() {
-        assertThat(this.dialect.getSqlGenerationVisitor(null),
-                CoreMatchers.instanceOf(RedshiftSqlGenerationVisitor.class));
+        assertThat(this.dialect.getSqlGenerator(null), CoreMatchers.instanceOf(RedshiftSqlGenerationVisitor.class));
     }
 }

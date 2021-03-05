@@ -1,7 +1,7 @@
 package com.exasol.adapter.dialects.redshift;
 
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 import java.sql.Types;
 
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import com.exasol.adapter.AdapterProperties;
 import com.exasol.adapter.dialects.BaseIdentifierConverter;
 import com.exasol.adapter.jdbc.AbstractColumnMetadataReaderTestBase;
-import com.exasol.adapter.jdbc.JdbcTypeDescription;
+import com.exasol.adapter.jdbc.JDBCTypeDescription;
 import com.exasol.adapter.metadata.DataType;
 import com.exasol.adapter.metadata.DataType.ExaCharset;
 
@@ -34,19 +34,19 @@ class RedshiftColumnMetadataReaderTest extends AbstractColumnMetadataReaderTestB
 
     @Test
     void testMapJdbcTypeFallbackToParent() {
-        assertThat(this.columnMetadataReader.mapJdbcType(new JdbcTypeDescription(Types.BOOLEAN, 0, 0, 0, "")),
+        assertThat(this.columnMetadataReader.mapJdbcType(new JDBCTypeDescription(Types.BOOLEAN, 0, 0, 0, "")),
                 equalTo(DataType.createBool()));
     }
 
     @Test
     void testMapJdbcTypeOtherDouble() {
-        assertThat(this.columnMetadataReader.mapJdbcType(new JdbcTypeDescription(Types.OTHER, 0, 0, 0, "double")),
+        assertThat(this.columnMetadataReader.mapJdbcType(new JDBCTypeDescription(Types.OTHER, 0, 0, 0, "double")),
                 equalTo(DataType.createDouble()));
     }
 
     @Test
     void testMapJdbcTypeOtherUnknownToMaxVarChar() {
-        assertThat(this.columnMetadataReader.mapJdbcType(new JdbcTypeDescription(Types.OTHER, 0, 0, 0, "unknown")),
+        assertThat(this.columnMetadataReader.mapJdbcType(new JDBCTypeDescription(Types.OTHER, 0, 0, 0, "unknown")),
                 equalTo(DataType.createMaximumSizeVarChar(ExaCharset.UTF8)));
     }
 }
