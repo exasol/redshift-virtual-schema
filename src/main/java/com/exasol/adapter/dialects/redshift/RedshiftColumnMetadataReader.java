@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import com.exasol.adapter.AdapterProperties;
 import com.exasol.adapter.dialects.IdentifierConverter;
 import com.exasol.adapter.jdbc.BaseColumnMetadataReader;
-import com.exasol.adapter.jdbc.JdbcTypeDescription;
+import com.exasol.adapter.jdbc.JDBCTypeDescription;
 import com.exasol.adapter.metadata.DataType;
 
 /**
@@ -29,7 +29,7 @@ public class RedshiftColumnMetadataReader extends BaseColumnMetadataReader {
     }
 
     @Override
-    public DataType mapJdbcType(final JdbcTypeDescription jdbcTypeDescription) {
+    public DataType mapJdbcType(final JDBCTypeDescription jdbcTypeDescription) {
         switch (jdbcTypeDescription.getJdbcType()) {
         case Types.NUMERIC:
             return mapJdbcTypeNumericToDecimalWithFallbackToDouble(jdbcTypeDescription);
@@ -40,7 +40,7 @@ public class RedshiftColumnMetadataReader extends BaseColumnMetadataReader {
         }
     }
 
-    protected DataType mapJdbcTypeOther(final JdbcTypeDescription jdbcTypeDescription) {
+    protected DataType mapJdbcTypeOther(final JDBCTypeDescription jdbcTypeDescription) {
         final String originalDataTypeName = jdbcTypeDescription.getTypeName();
         if ("double".equals(originalDataTypeName)) {
             return DataType.createDouble();

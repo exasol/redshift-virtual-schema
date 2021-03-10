@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import com.exasol.adapter.AdapterException;
 import com.exasol.adapter.AdapterProperties;
 import com.exasol.adapter.dialects.SqlDialect;
-import com.exasol.adapter.dialects.SqlGenerationContext;
+import com.exasol.adapter.dialects.rewriting.SqlGenerationContext;
 import com.exasol.adapter.metadata.ColumnMetadata;
 import com.exasol.adapter.metadata.DataType;
 import com.exasol.adapter.sql.*;

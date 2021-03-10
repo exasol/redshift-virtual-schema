@@ -14,8 +14,11 @@ import java.util.*;
 import com.exasol.adapter.AdapterProperties;
 import com.exasol.adapter.capabilities.Capabilities;
 import com.exasol.adapter.dialects.*;
+import com.exasol.adapter.dialects.rewriting.ImportIntoTemporaryTableQueryRewriter;
+import com.exasol.adapter.dialects.rewriting.SqlGenerationContext;
 import com.exasol.adapter.jdbc.*;
-import com.exasol.adapter.sql.*;
+import com.exasol.adapter.sql.AggregateFunction;
+import com.exasol.adapter.sql.ScalarFunction;
 
 /**
  * This class implements the Redshift SQL dialect.
@@ -127,7 +130,7 @@ public class RedshiftSqlDialect extends AbstractSqlDialect {
     }
 
     @Override
-    public SqlNodeVisitor<String> getSqlGenerationVisitor(final SqlGenerationContext context) {
+    public SqlGenerator getSqlGenerator(final SqlGenerationContext context) {
         return new RedshiftSqlGenerationVisitor(this, context);
     }
 
@@ -144,6 +147,6 @@ public class RedshiftSqlDialect extends AbstractSqlDialect {
 
     @Override
     protected QueryRewriter createQueryRewriter() {
-        return new ImportIntoQueryRewriter(this, createRemoteMetadataReader(), this.connectionFactory);
+        return new ImportIntoTemporaryTableQueryRewriter(this, createRemoteMetadataReader(), this.connectionFactory);
     }
 }

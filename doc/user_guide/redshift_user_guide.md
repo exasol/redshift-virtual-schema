@@ -29,7 +29,7 @@ You need to specify the following settings when adding the JDBC driver via EXAOp
 
 Please refer to the [documentation on configuring JDBC connections to Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/configure-jdbc-connection.html) for details.
 
-## Upload JDBC Driver to EXAOperation
+## Upload JDBC Driver to BucketFS
 
 1. [Create a bucket in BucketFS](https://docs.exasol.com/administration/on-premise/bucketfs/create_new_bucket_in_bucketfs_service.htm) (recommended: `jdbc`)
 1. Upload the driver to BucketFS
@@ -51,7 +51,7 @@ The SQL statement below creates the adapter script, defines the Java class that 
 ```sql
 CREATE OR REPLACE JAVA ADAPTER SCRIPT ADAPTER.JDBC_ADAPTER AS
     %scriptclass com.exasol.adapter.RequestDispatcher;
-    %jar /buckets/<BFS service>/<bucket>/virtual-schema-dist-8.0.0-redshift-1.0.0.jar;
+    %jar /buckets/<BFS service>/<bucket>/virtual-schema-dist-9.0.1-redshift-2.0.0.jar;
     %jar /buckets/<BFS service>/<bucket>/RedshiftJDBC42-<JDBC driver version>.jar;
 /
 ;
@@ -76,7 +76,6 @@ Below you see how a Redshift Virtual Schema is created. Please note that you hav
 CREATE VIRTUAL SCHEMA <virtual schema name>
     USING ADAPTER.JDBC_ADAPTER
     WITH
-    SQL_DIALECT = 'REDSHIFT'
     CONNECTION_NAME = 'REDSHIFT_CONNECTION'
     CATALOG_NAME = '<database name>'
     SCHEMA_NAME = 'public';
