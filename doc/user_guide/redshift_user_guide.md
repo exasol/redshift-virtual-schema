@@ -29,7 +29,7 @@ You need to specify the following settings when adding the JDBC driver via EXAOp
 
 Please refer to the [documentation on configuring JDBC connections to Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/configure-jdbc-connection.html) for details.
 
-## Upload JDBC Driver to EXAOperation
+## Upload JDBC Driver to BucketFS
 
 1. [Create a bucket in BucketFS](https://docs.exasol.com/administration/on-premise/bucketfs/create_new_bucket_in_bucketfs_service.htm) (recommended: `jdbc`)
 1. Upload the driver to BucketFS
