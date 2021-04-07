@@ -1,4 +1,4 @@
-# Redshift Virtual Schema 2.0.0, released 2021-??-??
+# Redshift Virtual Schema 2.0.0, released 2021-04-07
 
 Code name: Remove `SQL_DIALECT` property
 
