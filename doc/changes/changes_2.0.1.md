@@ -1,6 +1,6 @@
 # Virtual Schema for Redshift 2.0.1, released 2021-11-23
 
-Code name: Dependency Updates on 'Remove `SQL_DIALECT` property'
+Code name: Dependency Updates'
 
 ## Dependency Updates
 
