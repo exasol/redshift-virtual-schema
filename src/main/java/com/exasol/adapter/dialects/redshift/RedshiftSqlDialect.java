@@ -19,6 +19,7 @@ import com.exasol.adapter.dialects.rewriting.SqlGenerationContext;
 import com.exasol.adapter.jdbc.*;
 import com.exasol.adapter.sql.AggregateFunction;
 import com.exasol.adapter.sql.ScalarFunction;
+import com.exasol.errorreporting.ExaError;
 
 /**
  * This class implements the Redshift SQL dialect.
@@ -123,7 +124,8 @@ public class RedshiftSqlDialect extends AbstractSqlDialect {
             return "NULL";
         } else {
             if (value.contains("'") || value.contains("\\")) {
-                throw new IllegalArgumentException("Redshift string literal contains illegal characters: ' or \\.");
+                throw new IllegalArgumentException(ExaError.messageBuilder("E-VS-RDSH-1")
+                        .message("Redshift string literal contains illegal characters: ' or \\.").toString());
             }
             return "'" + value + "'";
         }
@@ -139,9 +141,10 @@ public class RedshiftSqlDialect extends AbstractSqlDialect {
         try {
             return new RedshiftMetadataReader(this.connectionFactory.getConnection(), this.properties);
         } catch (final SQLException exception) {
-            throw new RemoteMetadataReaderException(
-                    "Unable to create Redshift remote metadata reader. Caused by: " + exception.getMessage(),
-                    exception);
+            throw new RemoteMetadataReaderException(ExaError.messageBuilder("E-VS-RDSH-2")
+                    .message("Unable to create Redshift remote metadata reader. Caused by: {{cause|uq}}",
+                            exception.getMessage())
+                    .toString(), exception);
         }
     }
 

@@ -1,0 +1,4 @@
+error-tags:
+  VS-RDSH:
+    packages:
+      - com.exasol.adapter.dialects.redshift
