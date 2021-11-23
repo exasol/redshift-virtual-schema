@@ -124,7 +124,7 @@ public class RedshiftSqlDialect extends AbstractSqlDialect {
             return "NULL";
         } else {
             if (value.contains("'") || value.contains("\\")) {
-                throw new IllegalArgumentException(ExaError.messageBuilder("E-VS-RS-1")
+                throw new IllegalArgumentException(ExaError.messageBuilder("E-VS-RDSH-1")
                         .message("Redshift string literal contains illegal characters: ' or \\.").toString());
             }
             return "'" + value + "'";
@@ -141,7 +141,7 @@ public class RedshiftSqlDialect extends AbstractSqlDialect {
         try {
             return new RedshiftMetadataReader(this.connectionFactory.getConnection(), this.properties);
         } catch (final SQLException exception) {
-            throw new RemoteMetadataReaderException(ExaError.messageBuilder("E-VS-RS-2")
+            throw new RemoteMetadataReaderException(ExaError.messageBuilder("E-VS-RDSH-2")
                     .message("Unable to create Redshift remote metadata reader. Caused by: {{cause|uq}}",
                             exception.getMessage())
                     .toString(), exception);
