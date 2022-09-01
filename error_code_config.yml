@@ -1,4 +1,5 @@
 error-tags:
-  VS-RDSH:
+  VSRDSH:
     packages:
       - com.exasol.adapter.dialects.redshift
+    highest-index: 2
