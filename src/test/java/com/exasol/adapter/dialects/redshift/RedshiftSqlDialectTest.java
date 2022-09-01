@@ -14,7 +14,9 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,15 +36,18 @@ import com.exasol.adapter.dialects.PropertyValidationException;
 import com.exasol.adapter.dialects.SqlDialect;
 import com.exasol.adapter.dialects.SqlDialect.NullSorting;
 import com.exasol.adapter.jdbc.ConnectionFactory;
+import com.exasol.adapter.jdbc.RemoteMetadataReaderException;
 import com.exasol.adapter.sql.ScalarFunction;
 
 @ExtendWith(MockitoExtension.class)
 class RedshiftSqlDialectTest {
     private RedshiftSqlDialect dialect;
     private Map<String, String> rawProperties;
+    @Mock
+    ConnectionFactory connectionFactoryMock;
 
     @BeforeEach
-    void beforeEach(@Mock final ConnectionFactory connectionFactoryMock) {
+    void beforeEach() {
         this.dialect = new RedshiftSqlDialect(connectionFactoryMock, AdapterProperties.emptyProperties());
         this.rawProperties = new HashMap<>();
     }
@@ -79,8 +84,22 @@ class RedshiftSqlDialectTest {
     }
 
     @Test
+    void testGetName() {
+        assertThat(this.dialect.getName(), equalTo("REDSHIFT"));
+    }
+
+    @Test
     void testMetadataReaderClass() {
         assertThat(this.dialect.createRemoteMetadataReader(), instanceOf(RedshiftMetadataReader.class));
+    }
+
+    @Test
+    void testCreatingRemoteMetadataReaderFails() throws SQLException {
+        when(connectionFactoryMock.getConnection()).thenThrow(new SQLException("mock"));
+        final RemoteMetadataReaderException exception = assertThrows(RemoteMetadataReaderException.class,
+                this.dialect::createRemoteMetadataReader);
+        assertThat(exception.getMessage(),
+                equalTo("E-VSRDSH-2: Unable to create Redshift remote metadata reader. Caused by: mock"));
     }
 
     @Test
@@ -136,7 +155,10 @@ class RedshiftSqlDialectTest {
             "a\\\\b:'a\\\\\\\\b'", "a\\'b:'a\\\\\\'b'" })
     @ParameterizedTest
     void testGetLiteralStringWithIllegalChars(final String value) {
-        assertThrows(IllegalArgumentException.class, () -> this.dialect.getStringLiteral(value));
+        final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> this.dialect.getStringLiteral(value));
+        assertThat(exception.getMessage(),
+                equalTo("E-VSRDSH-1: Redshift string literal contains illegal characters: ' or \\."));
     }
 
     @Test
