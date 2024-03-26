@@ -1,4 +1,4 @@
-# Virtual Schema for Redshift 3.0.0, released 2024-03-26
+# Virtual Schema for Redshift 3.0.0, released 2024-03-27
 
 Code name: Charset is always `utf-8`, deprecated IMPORT_DATA_TYPES `FROM_RESULT_SET` value .
 
