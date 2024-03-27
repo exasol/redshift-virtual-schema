@@ -32,7 +32,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.exasol.adapter.AdapterProperties;
 import com.exasol.adapter.capabilities.Capabilities;
-import com.exasol.adapter.dialects.PropertyValidationException;
 import com.exasol.adapter.dialects.SqlDialect;
 import com.exasol.adapter.dialects.SqlDialect.NullSorting;
 import com.exasol.adapter.jdbc.ConnectionFactory;
@@ -103,7 +102,7 @@ class RedshiftSqlDialectTest {
     }
 
     @Test
-    void testValidateCatalogProperty() throws PropertyValidationException {
+    void testValidateCatalogProperty() throws com.exasol.adapter.properties.PropertyValidationException {
         setMandatoryProperties();
         this.rawProperties.put(CATALOG_NAME_PROPERTY, "MY_CATALOG");
         final AdapterProperties adapterProperties = new AdapterProperties(this.rawProperties);
@@ -112,7 +111,7 @@ class RedshiftSqlDialectTest {
     }
 
     @Test
-    void testValidateSchemaProperty() throws PropertyValidationException {
+    void testValidateSchemaProperty() throws com.exasol.adapter.properties.PropertyValidationException {
         setMandatoryProperties();
         this.rawProperties.put(SCHEMA_NAME_PROPERTY, "MY_SCHEMA");
         final AdapterProperties adapterProperties = new AdapterProperties(this.rawProperties);
