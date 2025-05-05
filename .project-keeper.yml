@@ -3,11 +3,13 @@ sources:
     path: pom.xml
     modules:
       - jar_artifact
+      - integration_tests
+      - udf_coverage
 build:
   runnerOs: ubuntu-20.04
   freeDiskSpace: false
   exasolDbVersions:
-    - "7.1.25"
-    - "8.24.0"
+    - "8.34.0"
+    - "7.1.30"
 excludes:
 linkReplacements:
