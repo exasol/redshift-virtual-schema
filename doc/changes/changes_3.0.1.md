@@ -18,7 +18,6 @@ Code name:
 
 * Updated `com.exasol:virtual-schema-common-jdbc:12.0.0` to `12.0.1`
 * Updated `org.hamcrest:hamcrest:2.2` to `3.0`
-* Added `org.jacoco:org.jacoco.agent:0.8.12`
 * Added `org.junit.jupiter:junit-jupiter-api:5.12.2`
 * Added `org.junit.jupiter:junit-jupiter-params:5.12.2`
 * Removed `org.junit.jupiter:junit-jupiter:5.9.2`
@@ -36,9 +35,7 @@ Code name:
 * Updated `org.apache.maven.plugins:maven-assembly-plugin:3.6.0` to `3.7.1`
 * Updated `org.apache.maven.plugins:maven-clean-plugin:3.2.0` to `3.4.1`
 * Updated `org.apache.maven.plugins:maven-compiler-plugin:3.12.1` to `3.14.0`
-* Added `org.apache.maven.plugins:maven-dependency-plugin:3.8.1`
 * Updated `org.apache.maven.plugins:maven-enforcer-plugin:3.4.1` to `3.5.0`
-* Added `org.apache.maven.plugins:maven-failsafe-plugin:3.5.2`
 * Updated `org.apache.maven.plugins:maven-install-plugin:3.1.2` to `3.1.4`
 * Updated `org.apache.maven.plugins:maven-jar-plugin:3.3.0` to `3.4.2`
 * Updated `org.apache.maven.plugins:maven-site-plugin:3.12.1` to `3.21.0`

@@ -3,13 +3,15 @@ sources:
     path: pom.xml
     modules:
       - jar_artifact
-      - integration_tests
-      - udf_coverage
+# See https://github.com/exasol/redshift-virtual-schema/issues/7
+#      - integration_tests
+#      - udf_coverage
 build:
-  runnerOs: ubuntu-20.04
+  runnerOs: ubuntu-latest
   freeDiskSpace: false
-  exasolDbVersions:
-    - "8.34.0"
-    - "7.1.30"
+# See https://github.com/exasol/redshift-virtual-schema/issues/7
+#  exasolDbVersions:
+#    - "8.34.0"
+#    - "7.1.30"
 excludes:
 linkReplacements:
