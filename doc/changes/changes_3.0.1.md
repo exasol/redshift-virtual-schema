@@ -1,12 +1,14 @@
-# Virtual Schema for Redshift 3.0.1, released 2025-??-??
+# Virtual Schema for Redshift 3.0.1, released 2025-05-05
 
-Code name:
+Code name: Upgrade dependencies on top of 3.0.0
 
 ## Summary
 
+This release upgrades dependencies on top of version 3.0.0 and removes a reference an outdated Maven repository.
+
 ## Features
 
-* ISSUE_NUMBER: description
+* #19: Upgrade dependencies on top of 3.0.0
 
 ## Dependency Updates
 
