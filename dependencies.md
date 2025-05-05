@@ -15,6 +15,7 @@
 | [Virtual Schema Common JDBC][0] | [MIT License][1]                 |
 | [Hamcrest][4]                   | [BSD-3-Clause][5]                |
 | [JUnit Jupiter API][6]          | [Eclipse Public License v2.0][7] |
+| [JUnit Jupiter Params][6]       | [Eclipse Public License v2.0][7] |
 | [mockito-junit-jupiter][8]      | [MIT][9]                         |
 | [JaCoCo :: Agent][10]           | [EPL-2.0][11]                    |
 
