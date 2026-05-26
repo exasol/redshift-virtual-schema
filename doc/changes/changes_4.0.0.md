@@ -24,8 +24,8 @@ Starting with this release, this Virtual Schema no longer supports Exasol 7.1. T
 ### Test Dependency Updates
 
 * Updated `com.exasol:virtual-schema-common-jdbc:12.0.1` to `14.0.2`
-* Updated `org.junit.jupiter:junit-jupiter-api:5.12.2` to `6.1.0`
-* Updated `org.junit.jupiter:junit-jupiter-params:5.12.2` to `6.1.0`
+* Updated `org.junit.jupiter:junit-jupiter-api:5.12.2` to `5.14.4`
+* Updated `org.junit.jupiter:junit-jupiter-params:5.12.2` to `5.14.4`
 * Updated `org.mockito:mockito-junit-jupiter:5.17.0` to `5.23.0`
 
 ### Plugin Dependency Updates
