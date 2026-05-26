@@ -1,6 +1,5 @@
 # Virtual Schema for Redshift 4.0.0, released 2026-05-26
 
-
 Code name: Anonymous telemetry
 
 ## Summary
