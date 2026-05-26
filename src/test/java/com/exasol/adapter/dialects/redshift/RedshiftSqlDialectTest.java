@@ -30,8 +30,10 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.exasol.ExaMetadata;
 import com.exasol.adapter.AdapterProperties;
 import com.exasol.adapter.capabilities.Capabilities;
+import com.exasol.adapter.dialects.JDBCAdapterContext;
 import com.exasol.adapter.dialects.SqlDialect;
 import com.exasol.adapter.dialects.SqlDialect.NullSorting;
 import com.exasol.adapter.jdbc.ConnectionFactory;
@@ -44,10 +46,12 @@ class RedshiftSqlDialectTest {
     private Map<String, String> rawProperties;
     @Mock
     ConnectionFactory connectionFactoryMock;
+    @Mock
+    ExaMetadata exaMetadataMock;
 
     @BeforeEach
     void beforeEach() {
-        this.dialect = new RedshiftSqlDialect(connectionFactoryMock, AdapterProperties.emptyProperties());
+        this.dialect = testee(AdapterProperties.emptyProperties());
         this.rawProperties = new HashMap<>();
     }
 
@@ -89,6 +93,7 @@ class RedshiftSqlDialectTest {
 
     @Test
     void testMetadataReaderClass() {
+        when(exaMetadataMock.getDatabaseVersion()).thenReturn("3.2.1");
         assertThat(this.dialect.createRemoteMetadataReader(), instanceOf(RedshiftMetadataReader.class));
     }
 
@@ -106,7 +111,7 @@ class RedshiftSqlDialectTest {
         setMandatoryProperties();
         this.rawProperties.put(CATALOG_NAME_PROPERTY, "MY_CATALOG");
         final AdapterProperties adapterProperties = new AdapterProperties(this.rawProperties);
-        final SqlDialect sqlDialect = new RedshiftSqlDialect(null, adapterProperties);
+        final SqlDialect sqlDialect = testee(adapterProperties);
         sqlDialect.validateProperties();
     }
 
@@ -115,7 +120,7 @@ class RedshiftSqlDialectTest {
         setMandatoryProperties();
         this.rawProperties.put(SCHEMA_NAME_PROPERTY, "MY_SCHEMA");
         final AdapterProperties adapterProperties = new AdapterProperties(this.rawProperties);
-        final SqlDialect sqlDialect = new RedshiftSqlDialect(null, adapterProperties);
+        final SqlDialect sqlDialect = testee(adapterProperties);
         sqlDialect.validateProperties();
     }
 
@@ -183,5 +188,10 @@ class RedshiftSqlDialectTest {
     @Test
     void testGetSqlGenerationVisitor() {
         assertThat(this.dialect.getSqlGenerator(null), CoreMatchers.instanceOf(RedshiftSqlGenerationVisitor.class));
+    }
+
+    RedshiftSqlDialect testee(final AdapterProperties adapterProperties) {
+        return new RedshiftSqlDialect(
+                JDBCAdapterContext.builder().connectionFactory(connectionFactoryMock).properties(adapterProperties).metadata(exaMetadataMock).build());
     }
 }

@@ -11,12 +11,12 @@ import static com.exasol.adapter.capabilities.ScalarFunctionCapability.*;
 import java.sql.SQLException;
 import java.util.*;
 
-import com.exasol.adapter.AdapterProperties;
 import com.exasol.adapter.capabilities.Capabilities;
 import com.exasol.adapter.dialects.*;
 import com.exasol.adapter.dialects.rewriting.ImportIntoTemporaryTableQueryRewriter;
 import com.exasol.adapter.dialects.rewriting.SqlGenerationContext;
-import com.exasol.adapter.jdbc.*;
+import com.exasol.adapter.jdbc.RemoteMetadataReader;
+import com.exasol.adapter.jdbc.RemoteMetadataReaderException;
 import com.exasol.adapter.sql.AggregateFunction;
 import com.exasol.adapter.sql.ScalarFunction;
 import com.exasol.errorreporting.ExaError;
@@ -53,11 +53,10 @@ public class RedshiftSqlDialect extends AbstractSqlDialect {
     /**
      * Create a new instance of the {@link RedshiftSqlDialect}.
      *
-     * @param connectionFactory factory for the JDBC connection to the remote data source
-     * @param properties        user-defined adapter properties
+     * @param context context for the JDBC adapter
      */
-    public RedshiftSqlDialect(final ConnectionFactory connectionFactory, final AdapterProperties properties) {
-        super(connectionFactory, properties, Set.of(CATALOG_NAME_PROPERTY, SCHEMA_NAME_PROPERTY));
+    public RedshiftSqlDialect(final JDBCAdapterContext context) {
+        super(context, Set.of(CATALOG_NAME_PROPERTY, SCHEMA_NAME_PROPERTY));
     }
 
     @Override
@@ -139,7 +138,7 @@ public class RedshiftSqlDialect extends AbstractSqlDialect {
     @Override
     protected RemoteMetadataReader createRemoteMetadataReader() {
         try {
-            return new RedshiftMetadataReader(this.connectionFactory.getConnection(), this.properties);
+            return new RedshiftMetadataReader(this.connectionFactory.getConnection(), this.properties, this.exaMetadata);
         } catch (final SQLException exception) {
             throw new RemoteMetadataReaderException(ExaError.messageBuilder("E-VSRDSH-2")
                     .message("Unable to create Redshift remote metadata reader. Caused by: {{cause|uq}}",
