@@ -3,13 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.exasol</groupId>
     <artifactId>redshift-virtual-schema</artifactId>
-    <version>3.0.1</version>
+    <version>4.0.0</version>
     <name>Virtual Schema for Redshift</name>
     <description>Virtual Schema for connecting Redshift as a data source to Exasol</description>
     <url>https://github.com/exasol/redshift-virtual-schema/</url>
     <properties>
-        <vscjdbc.version>12.0.1</vscjdbc.version>
-        <junit.version>5.12.2</junit.version>
+        <vscjdbc.version>14.0.2</vscjdbc.version>
+        <!-- Version 6 requires Java 17 -->
+        <junit.version>5.14.4</junit.version>
     </properties>
     <dependencies>
         <dependency>
@@ -20,7 +21,7 @@
         <dependency>
             <groupId>com.exasol</groupId>
             <artifactId>error-reporting-java</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
         <!--Unit test dependencies -->
         <dependency>
@@ -51,7 +52,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>5.17.0</version>
+            <version>5.23.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -67,7 +68,7 @@
             <plugin>
                 <groupId>com.exasol</groupId>
                 <artifactId>project-keeper-maven-plugin</artifactId>
-                <version>5.0.1</version>
+                <version>5.6.2</version>
                 <executions>
                     <execution>
                         <goals>
@@ -81,7 +82,7 @@
     <parent>
         <artifactId>redshift-virtual-schema-generated-parent</artifactId>
         <groupId>com.exasol</groupId>
-        <version>3.0.1</version>
+        <version>4.0.0</version>
         <relativePath>pk_generated_parent.pom</relativePath>
     </parent>
 </project>

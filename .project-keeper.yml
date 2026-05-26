@@ -9,9 +9,5 @@ sources:
 build:
   runnerOs: ubuntu-latest
   freeDiskSpace: false
-# See https://github.com/exasol/redshift-virtual-schema/issues/7
-#  exasolDbVersions:
-#    - "8.34.0"
-#    - "7.1.30"
 excludes:
 linkReplacements:

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.exasol.adapter.AdapterException;
-import com.exasol.adapter.AdapterProperties;
+import com.exasol.adapter.dialects.JDBCAdapterContext;
 import com.exasol.adapter.dialects.SqlDialect;
 import com.exasol.adapter.dialects.rewriting.SqlGenerationContext;
 import com.exasol.adapter.metadata.ColumnMetadata;
@@ -21,8 +21,7 @@ class RedshiftSqlGenerationVisitorTest {
 
     @BeforeEach
     void beforeEach() {
-        final SqlDialect dialect = new RedshiftSqlDialectFactory().createSqlDialect(null,
-                AdapterProperties.emptyProperties());
+        final SqlDialect dialect = new RedshiftSqlDialectFactory().createSqlDialect(JDBCAdapterContext.builder().build());
         final SqlGenerationContext context = new SqlGenerationContext("test_catalog", "test_schema", false);
         this.visitor = new RedshiftSqlGenerationVisitor(dialect, context);
     }
