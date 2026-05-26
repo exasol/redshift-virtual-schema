@@ -23,6 +23,17 @@ public class RedshiftSqlDialectFactoryTest {
     }
 
     @Test
+    void testGetSqlDialectVersion() {
+        // Version only available in built artifact
+        assertThat(this.factory.getSqlDialectVersion(), equalTo("UNKNOWN"));
+    }
+
+    @Test
+    void testGetAdapterProjectShortTag() {
+        assertThat(this.factory.getAdapterProjectShortTag(), equalTo("VSRDSH"));
+    }
+
+    @Test
     void testCreateDialect() {
         assertThat(this.factory.createSqlDialect(JDBCAdapterContext.builder().build()),
                 instanceOf(RedshiftSqlDialect.class));
