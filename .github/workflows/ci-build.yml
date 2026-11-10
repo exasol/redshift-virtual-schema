@@ -75,16 +75,14 @@ jobs:
         id: sonar-analysis
         if: ${{ env.SONAR_TOKEN != null }}
         run: |
-          mvn --batch-mode org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-              -DossindexSkip=true \
-              -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn \
+          ./mvnw --batch-mode org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+              -Dossindex.skip=true \
+              --no-transfer-progress \
               -DtrimStackTrace=false \
-              -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
               -Dsonar.token=$SONAR_TOKEN
-        env: {
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}',
-          SONAR_TOKEN: '${{ secrets.SONAR_TOKEN }}'
-        }
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - 
         name: Verify Release Artifacts
         id: verify-release-artifacts

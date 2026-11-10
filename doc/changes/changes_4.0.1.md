@@ -35,6 +35,7 @@ This release configures the SonarCloud analysis to import the JaCoCo XML coverag
 * Updated `io.github.git-commit-id:git-commit-id-maven-plugin:10.0.0` to `10.0.1`
 * Updated `org.apache.maven.plugins:maven-artifact-plugin:3.6.1` to `3.7.0`
 * Updated `org.apache.maven.plugins:maven-compiler-plugin:3.15.0` to `3.16.0`
+* Added `org.apache.maven.plugins:maven-dependency-plugin:3.11.0`
 * Updated `org.apache.maven.plugins:maven-enforcer-plugin:3.6.2` to `3.6.3`
 * Updated `org.apache.maven.plugins:maven-install-plugin:3.1.4` to `3.2.0`
 * Updated `org.apache.maven.plugins:maven-jar-plugin:3.5.0` to `3.5.1`
