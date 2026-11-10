@@ -85,6 +85,7 @@ jobs:
               -DossindexSkip=true \
               -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn \
               -DtrimStackTrace=false \
+              -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
               -Dsonar.token=$SONAR_TOKEN
         env: {
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}',

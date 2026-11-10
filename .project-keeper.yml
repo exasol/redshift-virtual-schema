@@ -9,5 +9,25 @@ sources:
 build:
   runnerOs: ubuntu-latest
   freeDiskSpace: false
+  workflows:
+    - name: "ci-build.yml"
+      stepCustomizations:
+        - action: REPLACE
+          job: build-and-test
+          stepId: sonar-analysis
+          content:
+            name: Sonar analysis
+            id: sonar-analysis
+            if: ${{ env.SONAR_TOKEN != null }}
+            run: |
+              mvn --batch-mode org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+                  -DossindexSkip=true \
+                  -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn \
+                  -DtrimStackTrace=false \
+                  -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
+                  -Dsonar.token=$SONAR_TOKEN
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 excludes:
 linkReplacements:
