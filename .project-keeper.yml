@@ -3,6 +3,7 @@ sources:
     path: pom.xml
     modules:
       - jar_artifact
+      - mockito_agent
 # See https://github.com/exasol/redshift-virtual-schema/issues/7
 #      - integration_tests
 #      - udf_coverage
